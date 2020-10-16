@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background: url('image/clock-bg.jpg');
+            background-size: 100%, 100%;
+            background-repeat: repeat-y;
+        }
+
+        .wrap-clock {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ddd;
+        }
+
+        .single-wrap {
+            margin-top: 10%;
+        }
+
+        #quotes {
+            margin: 5%;
+            color: #ddd;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #myclock {
+            font-size: 50px;
+            color: ddd;
+            box-shadow: 3px 3px 20px white;
+            padding: 10px 30px 10px 30px;
+            border-radius: 5px;
+            border: 1px solid #fff;
+        }
+
+        #today {
+            font-size: 42px;
+            color: ddd;
+        }
+
+        #dtyear {
+            font-size: 30px;
+            color: ddd;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="quotes">
+
+    </div>
+
+    <div class="wrap-clock">
+
+        <div id="myclock">
+
+        </div>
+
+        <div class="single-wrap">
+            <div id="today">
+
+            </div>
+
+            <div id="dtyear">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- javascript -->
+    <script>
+        var date = new Date();
+        var d = date.getDay();
+        var mth = date.getMonth();
+        var dt = date.getDate();
+        var y = date.getFullYear();
+        var day;
+        var month;
+        var quote;
+
+        //for day
+        switch (d) {
+            case 0:
+                day = 'Sunday';
+                break;
+            case 1:
+                day = 'Monday';
+                break;
+            case 2:
+                day = 'Twesday';
+                break;
+            case 3:
+                day = 'Wednesday';
+                break;
+            case 4:
+                day = 'Thursday';
+                break;
+            case 5:
+                day = 'Friday';
+                break;
+            case 6:
+                day = 'Saturday';
+                break;
+            default:
+                break;
+        }
+
+        //for month
+        switch (mth) {
+            case 0:
+                month = 'Jun';
+                break;
+            case 1:
+                month = 'Feb';
+                break;
+            case 2:
+                month = 'Mar';
+                break;
+            case 3:
+                month = 'Apr';
+                break;
+            case 4:
+                month = 'May';
+                break;
+            case 5:
+                month = 'Jun';
+                break;
+            case 6:
+                month = 'Jul';
+                break;
+            case 7:
+                month = 'Aug';
+                break;
+            case 8:
+                month = 'Sep';
+                break;
+            case 9:
+                month = 'Oct';
+                break;
+            case 10:
+                month = 'Nov';
+                break;
+            case 11:
+                month = 'Dec';
+                break;
+            default:
+                break;
+        }
+
+        //for quote
+        switch (d) {
+            case 0:
+                quote = 'আল্লাহ সর্বশক্তিমান এবং তিনি সকলকিছু মুুহূর্তে করার ক্ষমতা রাখেন';
+                break;
+            case 1:
+                quote = 'অতএব ধ্বংস সে লোকদের জন্য যাদের হৃদয় কঠিন হয়ে গেছে আল্লাহর স্বরণ থেকে । তারা স্পষ্ট বিভ্রান্তিতে নিপতিত । [৩৯:২২]';
+                break;
+            case 2:
+                quote = 'তোমরা তোমাদের রবকে ডাক অনুনয় বিনয় করে ও চুপিসারে । নিশ্চয় তিনি পছন্দ করে না সীমালঙ্ঘনকারীদের । [৭:৫৫]';
+                break;
+            case 3:
+                quote = 'আল্লাহ সর্বশক্তিমান এবং তিনি সকলকিছু মুুহূর্তে করার ক্ষমতা রাখেন ।';
+                break;
+            case 4:
+                quote = 'অতএব ধ্বংস সে লোকদের জন্য যাদের হৃদয় কঠিন হয়ে গেছে আল্লাহর স্বরণ থেকে । তারা স্পষ্ট বিভ্রান্তিতে নিপতিত । [৩৯:২২]';
+                break;
+            case 5:
+                quote = 'আল্লাহর নিকট দোয়া অপেক্ষা অধিক সম্মানিত আর কিছু নেই [তিরমিযি ৩৩৭০]';
+                break;
+            case 6:
+                quote = 'আল্লাহ সর্বশক্তিমান এবং তিনি সকলকিছু মুুহূর্তে করার ক্ষমতা রাখেন';
+                break;
+            default:
+                break;
+        }
+
+        document.getElementById('quotes').innerText = quote;
+
+        var dateYear = ' ' + dt + ' ' + month + ' ' + y;
+        document.getElementById('today').innerText = day;
+        document.getElementById('dtyear').innerText = dateYear;
+
+        function timeShow() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var session = 'AM';
+
+            if (h == 0) {
+                h = 12;
+            }
+
+            if (h > 12) {
+                h = h - 12;
+                session = 'PM';
+            }
+
+            h = (h < 10) ? h = '0' + h : h;
+            m = (m < 10) ? m = '0' + m : m;
+            s = (s < 10) ? s = '0' + s : s;
+
+            var time = h + ':' + m + ':' + s + ' ' + session;
+            document.getElementById('myclock').innerText = time;
+            document.getElementById('myclock').textContent = time;
+
+            setTimeout(timeShow, 1000);
+        }
+        timeShow();
+    </script>
+
+</body>
+</html>
